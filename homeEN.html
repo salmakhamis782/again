@@ -1,0 +1,195 @@
+<?php 
+include '../init.php';
+$user = user();
+if($user == false){
+    header("location: log.php");
+}
+$user_id = $_SESSION['user_id'];
+
+$sel = mysqli_query($con , "select * from `users` where `id` = $user_id");
+$s = mysqli_fetch_assoc($sel);
+// die();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homeEN.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Egyptian Ministry of Health and Population - Verification Of Vaccination Certificate</title>
+    <link rel="shortcut icon" href="iconn.png"></head>
+<body>
+    <header>
+        <div class="imgg">
+        <img src="iconn.png" alt="">
+        <p>جمهورية مصر العربية
+            <br>
+            Egyptian Ministry of Health and Population
+        </p>    
+        </div>
+
+<a href="homeEN.php" class="global"><i class="fa fa-globe">EN</i></a>
+    </header>
+    <div class="body">
+    <h2>Egyptian Ministry of Health and Population - Verification Of Vaccination Certificate</h2>
+    <section class="card">
+        <div class="div">
+        <img src="img.png" alt="">
+        </div> 
+        <div class="b1">
+        <i class="fa fa-check"></i>
+        <p>Vaccinated</p>
+        <hr>
+        
+    <div class="row">
+        <div class="column">
+          <h3>Dose 1</h3>
+          <p>Date: <br> <?php print $s['tr_f'];?></p>
+          <br>
+          <p>Type:<br><?php print $s['fahs'];?> </p>
+        </div>
+        
+        <div class="column" >
+          <h3> Dose 2</h3>
+          <p>Date:<br><?php print $s['tr_f2'];?> </p>  
+          <br>     
+          <p>Type:<br><?php print $s['fahs3'];?></p>
+          
+        </div>
+        
+        <div class="column" >
+          <h3>Dose3</h3>
+          <p>Date: <br><?php print $s['tr_f3'];?></p>
+          <br>
+          <p>Type:<br><?php print $s['fahs3'];?></p>
+          
+        </div>
+        </div>
+        <!---
+        <table style="width:100%" class="t1">
+            <tr>
+              
+              <td style="color: #367b97;">الجرعة الثالثة</td>
+              <td style="color: #367b97;">الجرعة الثانية</td>
+              <td style="color: #367b97;">الجرعة الاولي</td>
+              
+            </tr>
+            <tr>
+              
+              <td>التاريخ: <?php print $s['tr_f'];?></td>
+              
+              <td>التاريخ:<?php print $s['tr_f2'];?> </td>
+              <td>التاريخ: <?php print $s['tr_f3'];?></td>
+            </tr>
+            <tr>
+              
+              <td>نوع اللقاح: ا<?php print $s['fahs3'];?> أربعة اسابيع</td>
+              
+              <td>نوع اللقاح: <?php print $s['fahs2'];?></td>
+              <td>نوع اللقاح:<?php print $s['fahs'];?></td>
+            </tr>
+          </table>-->
+    
+   
+        <!--
+        <table style="width:100%" class="t2">
+            <tr class="tr1">
+              
+              
+              
+            <td><?php print $s['name_passport'];?> </td>
+            <td>الاسم في وثيقة السفر </td>
+            <td><?php print $s['name'];?> </td>
+            <td>الاسم بالكامل</td>
+            </tr>
+            <tr class="tr2">
+           <td><?php print $s['passport'];?></td>
+              <td>رقم جواز السفر</td> 
+               <td><?php print $s['num_8w'];?></td>
+              <td>الرقم القومي</td>
+              
+               </tr>            
+              <tr><td> <?php print $s['birth'];?>  </td>
+                   <td>تاريخ الميلاد</td> 
+              <td><?php print $s['number_ts'];?> </td> 
+             <td>رقم التسجيل </td>
+             
+             
+             </tr>
+             <tr>
+             
+             <td><?php print $s['gens'];?></td>
+                <td>الجنسية</td> 
+                <td><?php print $s['type'];?></td>
+                 <td>النوع</td>
+            </tr>
+                </table>-->
+
+
+                   
+                
+    </section>
+
+
+
+    </div>
+    
+    
+    <div class="row row2">
+        <div class="column" >
+          <p><b>Full name:</b></p>
+          <p><?php print $s['name'];?></p>
+        </div>
+        
+        <div class="row">
+            <div class="column" >
+              <p><b>Full Name in Passport:</b></p>
+              <p><?php print $s['name_passport'];?></p>
+            </div>
+        
+            <div class="row">
+                <div class="column">
+                  <p><b>National ID:</b></p>
+                  <p><?php print $s['num_8w'];?></p>
+                </div>
+
+                <div class="row">
+                    <div class="column" >
+                      <p><b>Passport Number:</b></p>
+                      <p><?php print $s['passport'];?></p>
+                    </div>
+                    <div class="row">
+                        <div class="column" >
+                          <p><b>Registration Number:</b></p>
+                          <p><?php print $s['number_ts'];?></p>
+                        </div>
+                        <div class="row">
+                            <div class="column" >
+                              <p><b>:Date of Birth:</b></p>
+                              <p><?php print $s['number_ts'];?></p>
+                            </div>
+                            <div class="row">
+                                <div class="column" >
+                                  <p><b>Gender:</b></p>
+                                  <p><?php print $s['type'];?></p>
+                                </div>
+                                <div class="row">
+                                    <div class="column" style="margin-bottom: 80px;">
+                                      <p><b>Nationality:</b></p>
+                                      <p><?php print $s['gens'];?></p>
+                                    </div>
+                                                                                                                    
+      
+
+
+    <footer>جميع الحقوق محفوظة - وزارة الصحة والسكان المصرية © 2021
+        <br>
+        <span>Designed and development by
+        <a href="https://chat.whatsapp.com/LDZYA3CXynSKBJJ6fIGcHj">Tera Tronics</a></span>
+    
+    </footer>
+</body>
+</html>
